@@ -21,7 +21,7 @@ app.prepare().then(() => {
 
 	server.get("/video/:id", async (req, res) => {
 		const data = await fetchVideoInfo(req.params.id);
-		console.log("pass 1", data);
+		// console.log("pass 1", data);
 		return app.render(req, res, "/video/:id", { data });
 	});
 

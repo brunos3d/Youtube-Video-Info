@@ -3,8 +3,8 @@ import moment from "moment";
 import style from "../../../styles/VideoInfo";
 
 const VideoInfo = (props) => {
-	const data = props.data;
-	console.log("pass 2", data);
+	// const data = props.data;
+	// console.log("pass 2", data);
 
 	const {
 		videoId,
