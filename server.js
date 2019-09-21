@@ -1,0 +1,38 @@
+const express = require("express");
+const next = require("next");
+
+const port = parseInt(process.env.PORT, 10) || 3000;
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const fetchVideoInfo = require('youtube-info');
+// const handle = app.getRequestHandler();
+
+app.prepare().then(() => {
+	const server = express();
+
+	server.get("/info/:id", async (req, res) => {
+		const data = await fetchVideoInfo(req.params.id);
+		console.log(data);
+	});
+
+	server.get("/", (req, res) => {
+		return app.render(req, res, "/", req.query);
+	});
+
+	// server.get("/b", (req, res) => {
+	// 	return app.render(req, res, "/b", req.query);
+	// });
+
+	// server.get("/posts/:id", (req, res) => {
+	// 	return app.render(req, res, "/posts", { id: req.params.id });
+	// });
+
+	// server.all("*", (req, res) => {
+	// 	return handle(req, res);
+	// });
+
+	server.listen(port, error => {
+		if (error) throw error;
+		console.log(`> Ready on http://localhost:${port}`);
+	});
+});
