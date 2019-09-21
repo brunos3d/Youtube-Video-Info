@@ -1,0 +1,10 @@
+{
+	"watch": [
+		"./server.js"
+	],
+	"ignore": [
+		"./src/**",
+		"./.next/**"
+	],
+	"exec": "node ./server.js"
+}
