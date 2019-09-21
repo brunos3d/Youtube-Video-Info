@@ -1,12 +1,11 @@
-import Link from "next/link";
+import moment from "moment";
 
 import style from "../../../styles/VideoInfo";
 
-import moment from "moment";
-
 const VideoInfo = (props) => {
-	// const data = props.data;
-	// console.log(data);
+	const data = props.data;
+	console.log("pass 2", data);
+
 	const {
 		videoId,
 		url,
@@ -22,7 +21,8 @@ const VideoInfo = (props) => {
 		datePublished,
 		likeCount,
 		dislikeCount,
-		commentCount
+		commentCount,
+		channelThumbnailUrl
 	} = props.data;
 
 	const dateParts = datePublished.split("-");
@@ -105,6 +105,10 @@ const VideoInfo = (props) => {
 				<tr>
 					<td>Livre para todos (Family-Friendly)</td>
 					<td>{formatBoolean(isFamilyFriendly)}</td>
+				</tr>
+				<tr>
+					<td>Thumbnail URL</td>
+					<td>{channelThumbnailUrl}</td>
 				</tr>
 			</table>
 
